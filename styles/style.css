@@ -19,6 +19,11 @@ body{
     background:var(--light);
 }
 
+#body{
+    position:relative;
+}
+
+
 /* first Loader for time that website load for user */
 
 .firstLoader{
@@ -156,6 +161,50 @@ header .left-nav{
     width:25%;
 }
 
+header .left-nav .hamburger-menu{
+    display:none;
+    width:2.5rem;
+    height:2rem;
+    position:absolute;
+    cursor:pointer;
+    background:none;
+    border:none;
+}
+
+header .left-nav .hamburger-menu span{
+    display:inline-block;
+    width:100%;
+    height:2px;
+    background:var(--dark);
+    position:absolute;
+    border-radius:1rem;
+    top:0;
+    left:0;
+    transition: 0.125s ease-in-out;
+}
+
+header .left-nav .hamburger-menu span:nth-child(2){
+    top:0.75rem;
+}
+
+header .left-nav .hamburger-menu span:nth-child(3){
+    top:1.5rem;
+}
+
+header .left-nav .hamburger-menu.open span:nth-child(1){
+    top:0.75rem;
+    transform:rotate(45deg);
+}
+
+header .left-nav .hamburger-menu.open span:nth-child(2){
+    opacity:0;
+}
+
+header .left-nav .hamburger-menu.open span:nth-child(3){
+    top:0.75rem;
+    transform:rotate(-45deg);
+}
+
 header .left-nav li{
     position:relative;
 }
@@ -198,8 +247,8 @@ header .left-nav li.active span{
 header nav .middle-nav h3{
     background : var(--dark);
     color:var(--light);
-    width:4rem;
-    height:4rem;
+    width:5rem;
+    height:5rem;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -216,6 +265,49 @@ header nav .middle-nav h3:hover{
 header .right-nav{
     width:20%;
 }
+
+header .right-nav .nav-hire-me{
+    width:7rem;
+    height:7rem;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    position:absolute;
+    top:0;
+    right:2rem;
+}
+
+header .right-nav .nav-hire-me img{
+    width:100%;
+    height:100%;
+    animation:turn 6s linear infinite;
+} 
+
+header .right-nav .nav-hire-me a{
+    position:absolute;
+    display:inline-block;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    color:var(--light);
+    background:var(--dark);
+    border:1px solid var(--dark);
+    width:3.5rem;
+    height:3.5rem;
+    line-height:3.25rem;
+    text-align:center;
+    text-decoration:none;
+    font-size:0.75rem;
+    font-family: 'Roboto', sans-serif;
+    transition:0.125s ease-out;
+}
+
+header .right-nav .nav-hire-me a:hover{
+    background:var(--light);
+    color:var(--dark);
+}
+
+
 
 header .right-nav li button{
     width:1.75rem;
@@ -258,6 +350,10 @@ header nav .right-nav li svg{
     justify-content: space-between;
     align-items: center;
     gap:1rem;
+}
+
+#content .main-img-wrapper{
+    width:50%;
 }
 
 #content .main-img-wrapper img{
@@ -344,9 +440,132 @@ header nav .right-nav li svg{
     color:var(--primary);
 }
 
+#content .menu{
+    width:90%;
+    height:70vh;
+    position:fixed;
+    z-index:29;
+    top:20%;
+    margin:0 auto;
+    border:2px solid var(--dark);
+    border-radius:1rem;
+
+    display:none;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+    opacity:0;
+    transform:scale(0);
+}
+
+#content .menu.dark{
+    background: rgba(27, 27, 27, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.4px);
+    -webkit-backdrop-filter: blur(6.4px);
+    border: 1px solid rgba(27, 27, 27, 0.3);
+}
+
+#content .menu.light{
+    background: rgba(245, 245, 245, 0.76);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.6px);
+    -webkit-backdrop-filter: blur(5.6px);
+    border: 1px solid rgba(245, 245, 245, 0.3);
+}
+
+#content .menu.open{
+    animation : showMenu 0.4s ease-out forwards;
+}
+
+#content .menu ul{
+    list-style: none;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    gap:1.5rem;
+}
+
+#content .menu ul a{ 
+    text-decoration: none;
+    color:var(--light);
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#content .menu #menu-list li{
+    width:fit-content;
+    position:relative;
+}
+
+
+#content .menu #menu-list li span{
+    width:0;
+    height:2px;
+    border-radius: 1rem;
+    position:absolute;
+    background:var(--light);
+    left:0;
+    bottom:-0.5rem;
+    transform-origin: left;
+    transition: 0.35s ease-in-out;
+}
+
+
+#content .menu #menu-list li:hover span{
+    width:100%;
+}
+
+#content .menu #menu-list li.active span{
+    width:100%;
+}
+
+
+#content .menu #logos{
+    display:flex;
+    justify-content:center;
+    flex-direction:row;
+    gap:1rem;
+    align-items:center;
+}
+
+
+#content .menu li button{
+    width:1.75rem;
+    height:1.75rem;
+    cursor:pointer;
+    background:var(--dark);
+    border:none;
+    outline:none;
+    border-radius:50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#content .menu li button img{
+    width:1.25rem;
+    height:1.25rem;
+}
+
+#content .menu li img{
+    width:1.5rem;
+}
+
+#content .menu li:nth-child(4) img{
+    width:1.85rem;
+    height:3.5rem;
+}
+
+#content .menu li svg{
+    width:1.5rem;
+    height:1.5rem;
+}
+
+
 .hire-me{
     position:absolute;
-    bottom:0rem;
+    bottom:6rem;
     left:1rem;
     width:9rem;
     height:9rem;
@@ -390,7 +609,7 @@ header nav .right-nav li svg{
 
 .bulb-image{
     position:absolute;
-    bottom:2rem;
+    bottom:8rem;
     right:2rem;
     width:7rem;
     height:7rem;
@@ -473,5 +692,285 @@ footer a:hover{
 @keyframes loading-off{
     100%{
         width:0%;
+    }
+}
+
+@keyframes showMenu{
+    50%{
+        opacity:0;
+    }
+
+    100%{
+        opacity:1;
+        transform: scale(1);
+    }
+}
+
+/* medias */
+
+@media (max-width: 1379px) and (min-width: 1023px){
+    #content .main-content h1{
+        font-size:2.5rem;
+        line-height: 2.5rem;
+    }
+
+    
+    #content .main-content{
+        gap:0.75rem;
+        padding:0 2rem;
+    }
+
+    
+    #content{
+        padding : 0 1rem;
+        justify-content: space-around;
+        gap:0rem;
+    }
+    
+    header .left-nav{
+        width:30%;
+    }
+
+    header .right-nav{
+        width:28%;
+    }
+
+}
+
+@media (max-width: 1023px) and (min-width: 780px){
+    #content{
+        padding : 0;
+        justify-content: space-around;
+        gap:3rem;
+    }
+    
+    #content .main-content h1{
+        font-size:2rem;
+        line-height: 2rem;
+    }
+
+    
+    #content .main-content{
+        gap:0.75rem;
+        padding:0 2rem;
+    }
+        
+    header .left-nav{
+        width:30%;
+    }
+
+    header .left-nav li{
+        font-size:0.9rem;
+    }
+
+    header .right-nav{
+        width:30%;
+    }
+
+    .hire-me{
+        width:7rem;
+        height:7rem;
+    }
+
+    .hire-me a{
+        width:4rem;
+        height:4rem;
+        font-size:0.75rem;
+        line-height:3.75rem;
+    }
+
+    .bulb-image{
+        width:5rem;
+        height:5rem;
+    }
+
+    #content .main-img-wrapper{
+        position:relative;
+        left:-2rem;
+    }
+}
+
+@media (max-width: 780px) and (min-width : 639px){
+    #content{
+        width:100%;
+        padding :2rem 0rem 1rem;
+        flex-direction:column;
+        justify-content: space-around;
+        gap:1rem;
+    }
+    
+    #content .main-img-wrapper{
+        width:100%;
+    }
+
+    #content .main-img-wrapper img{
+        width:90%;
+        position:relative;
+        top:50%;
+        left:50%;
+        transform:translate(-50%);
+        margin:0 auto;
+    }
+    
+    #content .main-content{
+        gap:0.75rem;
+        padding:0 5rem;
+    }
+
+    #content .main-content h1{
+        font-size:3rem;
+        line-height: 3rem;
+        text-align:center;
+    }
+    
+    #content .main-content p{
+        font-size:1.25rem;
+        line-height:1.75rem;
+        text-align:center;
+    }
+
+    #content .main-content .btns-wrapper{
+        justify-content:center;
+    }
+
+    
+
+    header .middle-nav{
+        position:relative;
+        left:-1rem;
+        bottom:-1rem;
+    }
+
+    header .left-nav ul{
+        display:none;
+    }
+
+    header .left-nav .hamburger-menu{
+        display:block;
+        top:2.5rem;
+    }
+
+    header .right-nav ul{
+        display:none;
+    }
+
+    header .right-nav .nav-hire-me{
+        display:flex;
+    }
+
+    
+    #content .open{
+        display:flex;
+    }
+
+    .hire-me{
+        display:none;
+    }
+
+    .hire-me a{
+        width:4rem;
+        height:4rem;
+        font-size:0.75rem;
+        line-height:3.75rem;
+    }
+
+    .bulb-image{
+        display:none;
+    }
+
+}
+
+@media (max-width: 639px) and (min-width: 479px){
+    #content{
+        width:100%;
+        padding :2rem 0rem 1rem;
+        flex-direction:column;
+        justify-content: space-around;
+        gap:1rem;
+        position:relative;
+    }
+    
+    #content .main-img-wrapper{
+        width:100%;
+    }
+
+    #content .main-img-wrapper img{
+        width:90%;
+        position:relative;
+        top:50%;
+        left:50%;
+        transform:translate(-50%);
+        margin:0 auto;
+    }
+    
+    #content .main-content{
+        gap:0.75rem;
+        padding:0 5rem;
+    }
+
+    #content .main-content h1{
+        font-size:3rem;
+        line-height: 3rem;
+        text-align:center;
+    }
+    
+    #content .main-content p{
+        font-size:1.25rem;
+        line-height:1.75rem;
+        text-align:center;
+    }
+
+    #content .main-content .btns-wrapper{
+        justify-content:center;
+    }
+
+    #content .open{
+        display:flex;
+    }
+    
+
+    header .middle-nav{
+        position:relative;
+        left:-1rem;
+        bottom:-1rem;
+    }
+
+    header .left-nav ul{
+        display:none;
+    }
+
+    header .left-nav .hamburger-menu{
+        display:block;
+        top:2.5rem;
+    }
+
+    header .right-nav ul{
+        display:none;
+    }
+
+    header .right-nav .nav-hire-me{
+        display:flex;
+    }
+
+    .hire-me{
+        display:none;
+    }
+
+    .hire-me a{
+        width:4rem;
+        height:4rem;
+        font-size:0.75rem;
+        line-height:3.75rem;
+    }
+
+    .bulb-image{
+        display:none;
+    }
+
+
+
+    footer{
+        flex-direction:column;
+        gap:0.5rem;
     }
 }
