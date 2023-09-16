@@ -8,6 +8,8 @@ let hamburgerBtn = document.querySelector('.hamburger-menu')
 let menuElem = document.querySelector('#content .menu')
 let menuChangeThemeBtn = document.querySelector('#content .menu #themeBtn')
 let menuChangeThemeImgElem = document.querySelector('#content .menu #themeBtn img')
+let numElems = document.querySelectorAll('#content .user-statistic .num')
+
 let themeFlag = false
 
 // colors pallete for changing theme 
@@ -130,10 +132,18 @@ window.addEventListener('load' , getTheme)
 // libraries
 AOS.init()
 
+const options = {
+    duration: 3,
+}
 
-// let demo = new CountUp(, 50);
-// if (!demo.error) {
-//     demo.start();
-// } else {
-//     console.error(demo.error);
-// }
+setTimeout(() => {
+    numElems.forEach(numElem => {
+        let demo = new CountUp(numElem, +numElem.dataset.num, options);
+        if (!demo.error) {
+            demo.start();
+        } else {
+            console.error(demo.error);
+        }
+    })
+    
+} , 2000)
