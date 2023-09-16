@@ -1,18 +1,21 @@
 let menuWrapper = document.querySelector('.left-nav ul')
-let changeThemeBtn = document.querySelectorAll('.right-nav #themeBtn')[0]
+let changeThemeBtn = document.querySelector('.right-nav #themeBtn')
 let changeThemeImgElem = document.querySelector('.right-nav button img')
 let loader = document.querySelector('.loader')
 let firstLoader = document.querySelector('.firstLoader')
 let hamburgerBtn = document.querySelector('.hamburger-menu')
 let menuElem = document.querySelector('#content .menu')
-let menuChangeThemeBtn = document.querySelectorAll('#content .menu #themeBtn')[0]
+let menuChangeThemeBtn = document.querySelector('#content .menu #themeBtn')
+let menuChangeThemeImgElem = document.querySelector('#content .menu #themeBtn img')
 let themeFlag = false
 
+// colors pallete for changing theme 
 let colors = {
     dark : '#1b1b1b',
     light : '#f5f5f5'
 }
 
+// changing spa and load other pages on click on nav-links
 menuElem.addEventListener('click' , event => {
     console.log(event.target)
     
@@ -71,8 +74,11 @@ changeThemeBtn.addEventListener('click' , event => {
 
     localStorage.setItem('theme' , themeFlag ? 'dark' : 'light')
 
+
     let hireMeImg = document.querySelectorAll('.hireMeSec img')
-    changeTheme(hireMeImg , event.target ,menuChangeThemeBtn)
+
+    changeTheme(hireMeImg)
+    
 })
 
 menuChangeThemeBtn.addEventListener('click' , event =>{
@@ -81,16 +87,17 @@ menuChangeThemeBtn.addEventListener('click' , event =>{
     localStorage.setItem('theme' , themeFlag ? 'dark' : 'light')
     
     let hireMeImg = document.querySelectorAll('.hireMeSec img')
-    changeTheme(hireMeImg , event.target , changeThemeBtn)
+
+    changeTheme(hireMeImg)
     hideMenuHandler()
 })
 
-const changeTheme = (hireMeImages , changeThemeImgElem , changeThemeImgElem2) => {
-    changeThemeImgElem.src = themeFlag ?  
-    './images/moon-filled-to-sunny-filled-loop-transition.svg' : './images/sunny-filled-loop-to-moon-filled-loop-transition.svg'
+const changeTheme = (hireMeImages) => {
 
-    changeThemeImgElem2.src = themeFlag ?  
-    './images/moon-filled-to-sunny-filled-loop-transition.svg' : './images/sunny-filled-loop-to-moon-filled-loop-transition.svg'
+    changeThemeImgElem.src = themeFlag ?  './images/moon-filled-to-sunny-filled-loop-transition.svg' : './images/sunny-filled-loop-to-moon-filled-loop-transition.svg'
+
+    menuChangeThemeImgElem.src = themeFlag ?  './images/moon-filled-to-sunny-filled-loop-transition.svg' : './images/sunny-filled-loop-to-moon-filled-loop-transition.svg'
+
 
     hireMeImages.forEach(hireMeImg => {
         hireMeImg.src = themeFlag ?  
@@ -100,7 +107,7 @@ const changeTheme = (hireMeImages , changeThemeImgElem , changeThemeImgElem2) =>
     themeFlag ? menuElem.classList.remove('dark') : menuElem.classList.remove('light')
     menuElem.classList.add(themeFlag ? 'light' : 'dark')
 
-    // setting variables
+    // setting css color variables
     if(themeFlag){
         document.documentElement.style.setProperty('--dark' ,  colors.light)
         document.documentElement.style.setProperty('--light' ,  colors.dark)
@@ -110,7 +117,9 @@ const changeTheme = (hireMeImages , changeThemeImgElem , changeThemeImgElem2) =>
     }
 }
 
+// accessing to latest color of user theme 
 const getTheme = () => {
+    // showing loader when site loaded for user
     firstLoader.classList.add('off')
     firstLoader.lastElementChild.addEventListener('animationend' , () => {
         firstLoader.querySelectorAll('span').forEach(span => {
@@ -120,15 +129,17 @@ const getTheme = () => {
         firstLoader.style.display = 'none'
     })
     
-    themeFlag = localStorage.getItem('theme') === 'dark' ? true : false
-    
-    menuElem.classList.add(themeFlag ? 'light' : 'dark')
+    // changing theme
+    themeFlag = localStorage.getItem('theme') == 'dark' ? true : false
 
+    // menu for screens less than 780px , must be opposite of site's theme 
+    menuElem.classList.add(themeFlag ? 'light' : 'dark')
     
     let hireMeImg = document.querySelectorAll('.hireMeSec img')
-    changeTheme(hireMeImg , menuChangeThemeBtn , changeThemeBtn)
+    changeTheme(hireMeImg)
 }
 
+// show and hie menu
 function toggleMenu(){
     hamburgerBtn.classList.toggle('open')
     menuElem.classList.toggle('open')
@@ -137,4 +148,6 @@ function toggleMenu(){
 
 hamburgerBtn.addEventListener('click' , toggleMenu)
 window.addEventListener('load' , getTheme)
+
+// libraries
 AOS.init()

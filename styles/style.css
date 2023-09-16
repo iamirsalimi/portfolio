@@ -122,11 +122,11 @@ body{
 }
 
 .loader.on span:nth-child(2){
-    animation:loading-on 2s 0.25s ease-out forwards;
+    animation:loading-on 1.9s 0.25s ease-out forwards;
 }
 
 .loader.on span:nth-child(3){
-    animation:loading-on 2s 0.45s ease-out forwards;
+    animation:loading-on 1.8s 0.45s ease-out forwards;
 }
 
 /* header */
@@ -280,7 +280,7 @@ header .right-nav .nav-hire-me{
 header .right-nav .nav-hire-me img{
     width:100%;
     height:100%;
-    animation:turn 6s linear infinite;
+    animation:turn 7s linear infinite;
 } 
 
 header .right-nav .nav-hire-me a{
@@ -306,7 +306,6 @@ header .right-nav .nav-hire-me a:hover{
     background:var(--light);
     color:var(--dark);
 }
-
 
 
 header .right-nav li button{
@@ -577,7 +576,7 @@ header nav .right-nav li svg{
 .hire-me img{
     width:100%;
     height:100%;
-    animation:turn 6s linear infinite;
+    animation:turn 7s linear infinite;
 } 
 
 .hire-me a{
@@ -967,7 +966,118 @@ footer a:hover{
         display:none;
     }
 
+    footer{
+        flex-direction:column;
+        gap:0.5rem;
+    }
+}
 
+@media (max-width: 479px){
+    #content{
+        width:100%;
+        padding :2rem 0rem 1rem;
+        flex-direction:column;
+        justify-content: space-around;
+        gap:1rem;
+        position:relative;
+    }
+    
+    #content .main-img-wrapper{
+        width:100%;
+    }
+
+    #content .main-img-wrapper img{
+        width:90%;
+        position:relative;
+        top:50%;
+        left:55%;
+        transform:translate(-50%);
+        margin:0 auto;
+    }
+    
+    #content .main-content{
+        gap:1rem;
+        padding:0 2rem;
+    }
+
+    #content .main-content h1{
+        font-size:3rem;
+        line-height: 3rem;
+        text-align:center;
+    }
+    
+    #content .main-content p{
+        font-size:1.25rem;
+        line-height:1.75rem;
+        text-align:center;
+    }
+
+    #content .main-content .btns-wrapper{
+        justify-content:center;
+    }
+
+    #content .open{
+        display:flex;
+    }
+    
+    #content .menu{
+        top:17%;
+    }
+
+    header .middle-nav{
+        position:relative;
+        left:-1rem;
+        bottom:-1rem;
+    }
+
+    header .left-nav ul{
+        display:none;
+    }
+
+    header .left-nav .hamburger-menu{
+        display:block;
+        top:2.5rem;
+    }
+
+    header .right-nav ul{
+        display:none;
+    }
+
+    header .right-nav .nav-hire-me{
+        display:flex;
+        width:5rem;
+        height:5rem;
+        top:0.75rem;
+    }
+    
+    header .right-nav .nav-hire-me a{
+        width:2.75rem;
+        height:2.75rem;
+        line-height:2.5rem;
+        font-size:0.55rem;
+    }
+
+    header nav .middle-nav h3{
+        width:3.5rem;
+        height:3.5rem;
+    }
+
+    .hire-me{
+        display:none;
+    }
+
+    .hire-me a{
+        width:4rem;
+        height:4rem;
+        font-size:0.75rem;
+        line-height:3.75rem;
+    }
+
+
+
+    .bulb-image{
+        display:none;
+    }
 
     footer{
         flex-direction:column;
