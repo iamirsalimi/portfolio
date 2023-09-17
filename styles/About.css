@@ -4,6 +4,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    scroll-behavior: smooth;
 }
 
 :root{
@@ -13,6 +14,9 @@
     --primary: #B63E96;
     --primaryDark: #58E6D9;
 }
+
+
+
 
 body{
     height:100vh;
@@ -401,8 +405,19 @@ header nav .right-nav li svg{
     height:70vh;
 }
 
-#content .main-content .biography{
-    width:30%;
+#content .main-content .main-biography-content{
+    width:80%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    gap:1rem;
+    height:100%;
+    /* padding:3rem 0; */
+}
+
+
+#content .main-content .main-biography-content .biography{
+    width:35%;
     padding:3rem 0;
     font-family: 'Roboto', sans-serif;
     display: flex;
@@ -425,13 +440,14 @@ header nav .right-nav li svg{
     justify-content: start;
     gap:1rem;
     color:var(--dark);
+    opacity:0.9;
     text-align: justify;
 }
 
 
 
 #content .main-content .user-img-card{
-    width:35%;
+    width:45%;
     height:100%;
     border-radius:1.5rem;
     border:1px solid var(--dark);
@@ -456,7 +472,7 @@ header nav .right-nav li svg{
 }
 
 #content .main-content .user-statistics{
-    width:25%;
+    width:20%;
     display:flex;
     flex-direction: column;
     justify-content: space-around;
@@ -487,12 +503,13 @@ header nav .right-nav li svg{
 /* skills section */
 
 #content .main-content .skills-section{
-    margin:7rem 0 0;
+    margin:7rem 0 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap:3rem;
+    height:fit-content
 }
 
 #content .main-content .skills-section-title{
@@ -504,7 +521,6 @@ header nav .right-nav li svg{
 #content .main-content .skills-section .user-skills{
     display: grid;
     grid-template-columns: repeat(4 , 1fr);
-    grid-template-rows: repeat(3 , 14rem);
     grid-auto-rows: 14rem;
     place-content: center;
     gap:2rem;
@@ -543,7 +559,7 @@ header nav .right-nav li svg{
 /* experience section */
 
 #content .main-content .experience-section{
-    margin-top:-7rem;
+    margin:7rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -551,11 +567,82 @@ header nav .right-nav li svg{
     gap:3rem;
 }
 
-#content .main-content .experience-section .experience-title{
+#content .main-content .experience-section .experience-title,
+#content .main-content .education-section .education-title{
     font-size:5rem;
     color:var(--dark);
     font-family: 'Roboto', sans-serif;
+    
+}
 
+#content .main-content .experience-section .experience-content,
+#content .main-content .education-section .education-content{
+    display:flex;
+    flex-direction:column;
+    gap:3rem;
+    padding:1rem 5rem;
+    width:75%;
+    align-items:center;
+    position:relative;
+}
+
+#content .main-content .experience-section .experience-content .user-experience,
+#content .main-content .education-section .education-content .user-education{
+    display:flex;
+    flex-direction:column;
+    align-items:start;
+    gap:0.125rem;
+}
+
+#content .main-content .experience-section .experience-content .user-experience h3,
+#content .main-content .education-section .education-content .user-education h3{
+    color:var(--dark);
+    font-family: 'Roboto', sans-serif;
+    font-size:1.25rem;
+    
+}
+
+#content .main-content .experience-section .experience-content .user-experience a{
+    color:var(--primary);
+    text-decoration: none;
+}
+
+#content .main-content .experience-section .experience-content .user-experience .loc-and-date,
+#content .main-content .education-section .education-content .user-education .loc-and-date{
+    color:rgb(115, 115, 115);
+    font-family: 'lato', sans-serif;
+    font-size:0.75rem;
+}
+
+#content .main-content .experience-section .experience-content .user-experience .desc,
+#content .main-content .education-section .education-content .user-education .desc{
+    color:var(--dark);
+    opacity:0.85;
+    font-family: 'lato', sans-serif;
+    font-size:1rem;
+    text-align: justify;
+}
+
+#content .main-content .experience-section .experience-line,
+#content .main-content .education-section .education-line{
+    display:inline-block;
+    height:100%;
+    width:0.25rem;
+    background:var(--dark);
+    position:absolute;
+    left:-4rem;
+    top:0;
+}
+
+/* education section */
+
+#content .main-content .education-section{
+    margin:7rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:3rem;
 }
 
 /* footer */
@@ -578,6 +665,35 @@ footer a{
 
 footer a:hover{
     color:var(--primary)
+}
+
+/* back to up btn */
+
+.backToUp{
+    width:3rem;
+    height:3rem;
+    background:var(--primaryDark);
+    position:fixed;
+    left:-10rem;
+    bottom:2rem;
+    cursor:pointer;
+    border-radius:0.5rem;
+    border:none;
+    transition:0.25s ease-in-out;
+}
+
+.backToUp:hover{
+    background:var(--primary)
+}
+
+.backToUp.show{
+    left:1.5rem;
+}
+
+.backToUp svg{
+    width:2rem;
+    height:2rem;
+    fill:var(--dark);
 }
 
 /* animations  */
@@ -640,6 +756,9 @@ footer a:hover{
         width:28%;
     }
 
+    #content .main-content .main-content-title{
+        font-size:5rem;
+    }
 }
 
 @media (max-width: 1023px) and (min-width: 780px){
@@ -659,6 +778,68 @@ footer a:hover{
 
     header .right-nav{
         width:30%;
+    }
+
+    #content .main-content .main-content-title{
+        font-size:3.5rem;
+    }
+
+    #content .main-content .user-img-card{
+        width:50%;
+    }
+
+    #content .main-content .biography{
+        width:50%;
+    }
+
+    #content .main-content .biography h3{
+        font-size:1.75rem;
+    }
+
+    #content .main-content .user-statistics{
+        width:20%;
+    }
+
+    #content .main-content .user-statistic h3{
+        font-size:4rem;
+    }
+    
+    #content .main-content .user-statistic p{
+        font-size:1rem;
+    }
+
+    #content .main-content .main-content-sec{
+        flex-direction:column;
+        gap:1.5rem;
+        margin-bottom:7rem;
+    }
+
+    #content .main-content .main-content-sec .main-biography-content{
+        width:100%;
+        gap:0.25rem;
+    }
+
+    #content .main-content .user-statistics{
+        flex-direction:row;
+        width:95%;
+        justify-content:space-around;
+        padding:1rem 3rem;
+    }
+
+    #content .main-content .experience-section {
+        margin:0;
+    }
+
+    #content .main-content .skills-section .user-skills{
+        grid-template-columns: repeat(3 , 1fr);
+    }
+
+    #content .main-content .experience-section .experience-content{
+        width:100%;
+    }
+   
+    #content .main-content .education-section .education-content{
+        width:100%;
     }
 }
 
@@ -693,6 +874,70 @@ footer a:hover{
     #content .open{
         display:flex;
     }
+
+    
+    #content .main-content .main-content-title{
+        font-size:3.5rem;
+    }
+
+    #content .main-content .user-img-card{
+        width:50%;
+    }
+
+    #content .main-content .biography{
+        width:50%;
+    }
+
+    #content .main-content .biography h3{
+        font-size:1.75rem;
+    }
+
+    #content .main-content .user-statistics{
+        width:20%;
+    }
+
+    #content .main-content .user-statistic h3{
+        font-size:4rem;
+    }
+    
+    #content .main-content .user-statistic p{
+        font-size:1rem;
+    }
+
+    #content .main-content .main-content-sec{
+        flex-direction:column;
+        gap:1.5rem;
+        margin-bottom:7rem;
+    }
+
+    #content .main-content .main-content-sec .main-biography-content{
+        width:100%;
+        gap:0.25rem;
+    }
+
+    #content .main-content .user-statistics{
+        flex-direction:row;
+        width:95%;
+        justify-content:space-around;
+        padding:1rem 3rem;
+    }
+
+    #content .main-content .skills-section .user-skills{
+        grid-template-columns: repeat(2 , 1fr);
+    }
+
+    #content .main-content .experience-section .experience-content{
+        width:100%;
+    }
+   
+    #content .main-content .experience-section {
+        margin:0;
+    }
+
+    #content .main-content .education-section .education-content{
+        width:100%;
+    }
+
 }
 
 @media (max-width: 639px) and (min-width: 479px){
@@ -732,6 +977,81 @@ footer a:hover{
     footer{
         flex-direction:column;
         gap:0.5rem;
+    }
+
+    #content .main-content .main-content-title{
+        font-size:3rem;
+        margin-bottom:3rem;
+        text-align:center;
+    }
+
+    #content .main-content .user-img-card{
+        width:100%;
+        min-height:70%;
+    }
+
+    #content .main-content .main-biography-content .biography{
+        width:100%;
+    }
+
+    #content .main-content .biography h3{
+        font-size:1.75rem;
+    }
+
+
+    #content .main-content .user-statistic{
+        align-items: center;
+        justify-content: center;
+    }
+
+    #content .main-content .user-statistics .user-statistic h3{
+        font-size:2.5rem;
+    }
+    
+    #content .main-content .user-statistics .user-statistic p{
+        font-size:0.75rem;
+    }
+
+    #content .main-content .main-content-sec{
+        flex-direction:column;
+        gap:2.5rem;
+        margin-bottom:7rem;
+        padding:1rem 2rem;
+        height:100vh;
+    }
+
+    #content .main-content .main-content-sec .main-biography-content{
+        width:100%;
+        flex-direction: column-reverse;
+        gap:0.25rem;
+    }
+
+    #content .main-content .user-statistics{
+        flex-direction:row;
+        width:100%;
+        justify-content:space-around;
+        padding:1rem 0;
+    }
+
+    #content .main-content .user-statistics .user-statistics{
+        align-items:center;
+        justify-content:center;
+    }
+
+    #content .main-content .experience-section {
+        margin:0;
+    }
+
+    #content .main-content .skills-section .user-skills{
+        grid-template-columns: repeat(2 , 1fr);
+    }
+
+    #content .main-content .experience-section .experience-content{
+        width:100%;
+    }
+   
+    #content .main-content .education-section .education-content{
+        width:100%;
     }
 }
 
@@ -780,5 +1100,98 @@ footer a:hover{
     footer{
         flex-direction:column;
         gap:0.5rem;
+    }
+
+
+    #content .main-content .main-content-title{
+        font-size:3rem;
+        margin-bottom:3rem;
+        text-align:center;
+    }
+
+    #content .main-content .user-img-card{
+        width:100%;
+        min-height:70%;
+    }
+
+    #content .main-content .main-biography-content .biography{
+        width:100%;
+    }
+
+    #content .main-content .biography h3{
+        font-size:1.75rem;
+    }
+
+
+    #content .main-content .user-statistic{
+        align-items: center;
+        justify-content: center;
+    }
+
+    #content .main-content .user-statistics .user-statistic h3{
+        font-size:2.5rem;
+    }
+    
+    #content .main-content .user-statistics .user-statistic p{
+        font-size:0.75rem;
+    }
+
+    #content .main-content .main-content-sec{
+        flex-direction:column;
+        gap:3.5rem;
+        margin-bottom:7rem;
+        padding:1rem 2rem;
+        height:100vh;
+    }
+
+    #content .main-content .main-content-sec .main-biography-content{
+        width:100%;
+        flex-direction: column-reverse;
+        gap:0.25rem;
+    }
+
+    #content .main-content .user-statistics{
+        flex-direction:row;
+        width:100%;
+        justify-content:space-around;
+        padding:1rem 0;
+    }
+
+    #content .main-content .user-statistics .user-statistics{
+        align-items:center;
+        justify-content:center;
+    }
+
+    #content .main-content .skills-section .user-skills{
+        grid-template-columns: repeat(1 , 1fr);
+    }
+
+    #content .main-content .experience-section .experience-content{
+        width:100%;
+    }
+   
+    #content .main-content .education-section .education-content{
+        width:100%;
+    }
+
+    #content .main-content .education-section .education-content,
+    #content .main-content .experience-section .experience-content{
+        padding:1rem 3rem;
+    }
+
+    #content .main-content .experience-section {
+        margin:0;
+    }
+
+    #content .main-content .experience-section .experience-title{
+        font-size:3.5rem;
+    }
+
+    #content .main-content .education-section .education-title{
+        font-size:3.5rem;
+    }
+
+    #content .main-content .skills-section-title{
+        font-size:4rem;
     }
 }

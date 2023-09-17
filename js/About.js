@@ -9,6 +9,8 @@ let menuElem = document.querySelector('#content .menu')
 let menuChangeThemeBtn = document.querySelector('#content .menu #themeBtn')
 let menuChangeThemeImgElem = document.querySelector('#content .menu #themeBtn img')
 let numElems = document.querySelectorAll('#content .user-statistic .num')
+let userMainImg = document.querySelector('.user-img-card img')
+let backToUpBtn = document.querySelector('.backToUp')
 
 let themeFlag = false
 
@@ -95,7 +97,10 @@ const changeTheme = () => {
 
     menuChangeThemeImgElem.src = themeFlag ?  './images/moon-filled-to-sunny-filled-loop-transition.svg' : './images/sunny-filled-loop-to-moon-filled-loop-transition.svg'
 
+    userMainImg.src = themeFlag ? './images/userMainImg-light.png' : './images/userMainImg-dark.png'
+
     themeFlag ? menuElem.classList.remove('dark') : menuElem.classList.remove('light')
+
     menuElem.classList.add(themeFlag ? 'light' : 'dark')
 
     // setting css color variables
@@ -125,9 +130,21 @@ function toggleMenu(){
     menuElem.classList.toggle('open')
 }
 
+// scroll to top
+backToUpBtn.addEventListener('click' , () => {
+    window.scrollTo(0,0)
+})
+
 
 hamburgerBtn.addEventListener('click' , toggleMenu)
 window.addEventListener('load' , getTheme)
+window.addEventListener('scroll' , () => {
+    if(window.scrollY > 200){
+        backToUpBtn.classList.add('show')
+    } else {
+        backToUpBtn.classList.remove('show')
+    }
+})
 
 // libraries
 AOS.init()
@@ -147,3 +164,4 @@ setTimeout(() => {
     })
     
 } , 2000)
+
