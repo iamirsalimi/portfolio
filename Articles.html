@@ -3,21 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
+    <title>Portfolio Website | Projects</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./libraries/dist/aos.css">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/Articles.css">
 </head>
 <body>
-    
-    <div class="firstLoader">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    
+
     <div class="loader">
         <span></span>
         <span></span>
@@ -29,7 +23,7 @@
             <nav>
                 <div class="left-nav">
                     <ul>
-                        <li class="menu-li active">
+                        <li class="menu-li">
                             <a href="/">Home</a>
                             <span></span>
                         </li>
@@ -38,11 +32,11 @@
                             <span></span>
                         </li>
                         <li class="menu-li">
-                            <a href="/Projects">Projects</a>
+                            <a href=".Projects">Projects</a>
                             <span></span>
                         </li>
-                        <li class="menu-li">
-                            <a href="Articles">Articles</a>
+                        <li class="menu-li active">
+                            <a href="/Articles">Articles</a>
                             <span></span>
                         </li>
                     </ul>
@@ -96,10 +90,6 @@
                             </button>
                         </li>
                     </ul>
-                    <div class="nav-hire-me hireMeSec">
-                        <img src="./images/text-dark.svg">
-                        <a href="#">Hire Me</a>
-                    </div>
                 </div>
             </nav>
         </header>
@@ -107,7 +97,7 @@
         <div id="content">
             <div class="menu">
                 <ul id="menu-list">
-                    <li class="menu-list-item active">
+                    <li class="menu-list-item">
                         <a href="/">Home</a>
                         <span></span>
                     </li>
@@ -119,8 +109,8 @@
                         <a href="/Projects">Projects</a>
                         <span></span>
                     </li>
-                    <li class="menu-list-item">
-                        <a href="Articles">Articles</a>
+                    <li class="menu-list-item active">
+                        <a href="/Articles">Articles</a>
                         <span></span>
                     </li>
                 </ul>
@@ -164,45 +154,77 @@
                 </ul>
             </div>
 
-            <div class="main-img-wrapper">
-                <img src="./images/developer-pic-1.png" alt="userImg">
-            </div>
             <div class="main-content">
-                <h1 data-aos="fade-up" data-aos-duration="1000">
-                    <span data-aos="fade-up" data-aos-duration="1000">Turning</span> <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">Vision</span> <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">Into</span> <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="450">Reality</span> <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">With</span> <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="750">Code</span> <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900">And</span> <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1050">Design.</span>
-                </h1>
-                <p>
-                    As a skilled Back-End Developer, I am dedicated to turning ideas into innovative Web Application. Explore my latest projects and articles. showcasing expertise in Django and Web Development.
-                </p>
-                <div class="btns-wrapper">
-                    <a href="#" download>
-                        <button id="resume-btn">Resume   <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width='24'
-                            height='24'
-                            viewBox="0 0 24 24"
-                        >
-                            <path  d="M0 0h24v24H0z" />
-                            <path
-                            fill="none"
-                            stroke="var(--light)"
-                            strokeWidth="2"
-                            d="M11 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-5m-7 1L20 4m-5 0h5v5"
-                            />
-                        </svg></button>
+                <h2 class="main-content-title"><span data-aos="fade-up" data-aos-duration="1000">Words</span> <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Can</span> <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Change</span> <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">The</span> <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">World!</span></h2>
+                <div class="user-articles">
+
+                    <a href="#" class="user-article" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="img-wrapper">
+                            <img src="./images/create modal component in react using react portals.png" alt="Article Image">
+                        </div>
+
+                        <div class="article-main-content">
+                            <h2 class="article-title">Build A Custom Pagination Component In Reactjs From Scratch</h2>
+                            <p class="article-summary">Learn how to build a custom pagination component in ReactJS from scratch.
+                                Follow this step-by-step guide to integrate Pagination component in your ReactJS project.</p>
+                            <div class="reading-time">9 min read</div>
+                        </div>
+
                     </a>
-                    <a href="#" id="concat-btn">Contact</a>
+
+                    <a href="#" class="user-article" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="img-wrapper">
+                            <img src="./images/create loading screen in react js.jpg" alt="Article Image">
+                        </div>
+
+                        <div class="article-main-content">
+                            <h2 class="article-title">Creating Stunning Loading Screens In React: Build 3 Types Of Loading Screens</h2>
+                            <p class="article-summary">Learn how to create stunning loading screens in React with 3 different methods. 
+                                Discover how to use React-Loading, React-Lottie & build a custom loading screen. 
+                                Improve the user experience.</p>
+                            <div class="reading-time">10 min read</div>
+                        </div>
+                    </a>
                 </div>
+
+                <div class="all-articles-section">
+                    <div class="all-articles-title" data-aos="fade-up" data-aos-duration="1000">All Articles</div>
+
+                    <div class="all-articles">
+                        <div class="article-detail" data-aos="fade-up" data-aos-duration="1000">
+                            <a href="#" class="article-title">Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling</a>
+                            <div class="article-date">January 27 ,2023</div>
+                        </div>
+
+                        <div href="#" class="article-detail" data-aos="fade-up" data-aos-duration="1000">
+                            <a href="#" class="article-title">Silky Smooth Scrolling In Reactjs: A Step-By-Step Guide For React Developers</a>
+                            <div class="article-date">January 30 ,2023</div>
+                        </div>
+
+                        <div class="article-detail" data-aos="fade-up" data-aos-duration="1000">
+                            <a href="#" class="article-title">Creating An Efficient Modal Component In React Using Hooks And Portals</a>
+                            <div class="article-date">January 29 ,2023</div>
+                        </div>
+
+                        <div class="article-detail" data-aos="fade-up" data-aos-duration="1000">
+                            <a href="#" class="article-title">Build A Fabulous Todo List App With React, Redux And Framer-Motion</a>
+                            <div class="article-date">January 28 ,2023</div>
+                        </div>
+
+                        <div class="article-detail" data-aos="fade-up" data-aos-duration="1000">
+                            <a href="#" class="article-title">Redux Simplified: A Beginner's Guide For Web Developers</a>
+                            <div class="article-date">January 31 ,2023</div>
+                        </div>
+                        
+                        <div class="article-detail" data-aos="fade-up" data-aos-duration="1000">
+                            <a href="#" class="article-title">What Is Higher Order Component (Hoc) In React?</a>
+                            <div class="article-date">January 4 ,2023</div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
-        </div>
-
-        <div class="hire-me hireMeSec">
-            <img src="./images/text-dark.svg">
-            <a href="#">Hire Me</a>
-        </div>
-
-        <div class="bulb-image">
-            <img src="./images/miscellaneous_icons_1.svg" alt="">
         </div>
 
         <footer>
@@ -213,7 +235,9 @@
     </div>
 
 
+    <button class="backToUp"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg></button>
+
     <script src="./libraries/dist/aos.js"></script>
-    <script src="./js/main.js"></script>
+    <script type="module" src="./js/Articles.js"></script>
 </body>
 </html>

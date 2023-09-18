@@ -28,7 +28,7 @@ body{
 }
 
 /* loader */
-
+  
 .loader{
     position:fixed;
     top:0;
@@ -456,7 +456,6 @@ header nav .right-nav li svg{
     padding:1.5rem;
     background:var(--light);
     overflow: hidden;
-    /* box-shadow: 0 15px 15px 1px rgba(80,230,217, 0.4); */
     box-shadow: 7px 7px 0px 2px var(--dark);
 }
 
@@ -675,17 +674,21 @@ footer a:hover{
     width:3rem;
     height:3rem;
     background:var(--primaryDark);
+    border:1px solid var(--primaryDark);
     position:fixed;
     left:-10rem;
     bottom:2rem;
     cursor:pointer;
     border-radius:0.5rem;
-    border:none;
     transition:0.25s ease-in-out;
 }
 
 .backToUp:hover{
-    background:var(--primary)
+    background:var(--light)
+}
+
+.backToUp:hover svg{
+    fill:var(--primaryDark)
 }
 
 .backToUp.show{
@@ -696,6 +699,7 @@ footer a:hover{
     width:2rem;
     height:2rem;
     fill:var(--dark);
+    transition:0.25s ease-in-out;
 }
 
 /* animations  */
