@@ -15,13 +15,21 @@ let colors = {
     light : '#f5f5f5'
 }
 
+// load other file
+
+function urlRoutes(event){
+    console.log('loaded');
+    history.pushState({} , '' , event.target.href)
+    location.reload()
+}
+
 // changing spa and load other pages on click on nav-links
 menuElem.addEventListener('click' , event => {
-    console.log(event.target)
+    // console.log(event.target)
     
     event.preventDefault()
 
-    if(!event.target.matches('#menu-list a')){
+    if(!event.target.className.includes('nav-link')){
         return false    
     }
     
@@ -32,12 +40,17 @@ menuElem.addEventListener('click' , event => {
     hideMenuHandler()
 
     loader.classList.add('on')
+    
+    setTimeout(() => {
+        urlRoutes(event)
+    } ,995)
+
     loader.lastElementChild.addEventListener('animationend' , () => {
         loader.querySelectorAll('span').forEach(span => {
-            span.style.width = '0%'
+            span.style.width = '100%'
         })
-        loader.classList.remove('on')
     })
+
 })
 
 function hideMenuHandler(){
@@ -46,11 +59,11 @@ function hideMenuHandler(){
 }
 
 menuWrapper.addEventListener('click' , event => {
-    console.log(event.target)
-    
-    event.preventDefault()
+    // console.log(event.target , event.target.className.includes('nav-link'))
 
-    if(!event.target.matches('.menu-li a')){
+    event.preventDefault()
+    
+    if(!event.target.className.includes('nav-link')){
         return false    
     }
     
@@ -59,11 +72,17 @@ menuWrapper.addEventListener('click' , event => {
     event.target.parentNode.classList.add('active')
 
     loader.classList.add('on')
+
+
+    console.log('loaded');
+    setTimeout(() => {
+        urlRoutes(event)
+    } ,995)
+
     loader.lastElementChild.addEventListener('animationend' , () => {
         loader.querySelectorAll('span').forEach(span => {
-            span.style.width = '0%'
+            span.style.width = '100%'
         })
-        loader.classList.remove('on')
     })
 })
 
@@ -97,7 +116,6 @@ const changeTheme = (hireMeImages) => {
     changeThemeImgElem.src = themeFlag ?  './images/moon-filled-to-sunny-filled-loop-transition.svg' : './images/sunny-filled-loop-to-moon-filled-loop-transition.svg'
 
     menuChangeThemeImgElem.src = themeFlag ?  './images/moon-filled-to-sunny-filled-loop-transition.svg' : './images/sunny-filled-loop-to-moon-filled-loop-transition.svg'
-
 
     hireMeImages.forEach(hireMeImg => {
         hireMeImg.src = themeFlag ?  

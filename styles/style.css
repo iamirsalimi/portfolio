@@ -118,15 +118,15 @@ body{
 }
 
 .loader.on span:nth-child(1){
-    animation:loading-on 2s 0s ease-out forwards;
+    animation:loading-on 1s  ease-out forwards;
 }
 
 .loader.on span:nth-child(2){
-    animation:loading-on 1.9s 0.25s ease-out forwards;
+    animation:loading-on 1s ease-out forwards;
 }
 
 .loader.on span:nth-child(3){
-    animation:loading-on 1.8s 0.45s ease-out forwards;
+    animation:loading-on 1s ease-out forwards;
 }
 
 /* header */
@@ -679,11 +679,8 @@ footer a:hover{
 }
 
 @keyframes loading-on{
-    40%{
-        width:100%;
-    }
     100%{
-        width:0%;
+        width:100%;
     }
 }
 

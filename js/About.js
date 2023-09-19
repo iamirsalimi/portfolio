@@ -4,6 +4,7 @@ let menuWrapper = document.querySelector('.left-nav ul')
 let changeThemeBtn = document.querySelector('.right-nav #themeBtn')
 let changeThemeImgElem = document.querySelector('.right-nav button img')
 let loader = document.querySelector('.loader')
+let firstLoader = document.querySelector('.firstLoader')
 let hamburgerBtn = document.querySelector('.hamburger-menu')
 let menuElem = document.querySelector('#content .menu')
 let menuChangeThemeBtn = document.querySelector('#content .menu #themeBtn')
@@ -20,13 +21,20 @@ let colors = {
     light : '#f5f5f5'
 }
 
+// load other file
+
+function urlRoutes(event){
+    history.pushState({} , '' , event.target.href)
+    location.reload()
+}
+
 // changing spa and load other pages on click on nav-links
 menuElem.addEventListener('click' , event => {
-    console.log(event.target)
+    // console.log(event.target)
     
     event.preventDefault()
 
-    if(!event.target.matches('#menu-list a')){
+    if(!event.target.className.includes('nav-link')){
         return false    
     }
     
@@ -37,12 +45,17 @@ menuElem.addEventListener('click' , event => {
     hideMenuHandler()
 
     loader.classList.add('on')
+    
+    setTimeout(() => {
+        urlRoutes(event)
+    } ,995)
+
     loader.lastElementChild.addEventListener('animationend' , () => {
         loader.querySelectorAll('span').forEach(span => {
-            span.style.width = '0%'
+            span.style.width = '100%'
         })
-        loader.classList.remove('on')
     })
+
 })
 
 function hideMenuHandler(){
@@ -51,11 +64,11 @@ function hideMenuHandler(){
 }
 
 menuWrapper.addEventListener('click' , event => {
-    console.log(event.target)
-    
+    // console.log(event.target)
+
     event.preventDefault()
 
-    if(!event.target.matches('.menu-li a')){
+    if(!event.target.className.includes('nav-link')){
         return false    
     }
     
@@ -64,17 +77,21 @@ menuWrapper.addEventListener('click' , event => {
     event.target.parentNode.classList.add('active')
 
     loader.classList.add('on')
+
+    setTimeout(() => {
+        urlRoutes(event)
+    } ,995)
+
     loader.lastElementChild.addEventListener('animationend' , () => {
         loader.querySelectorAll('span').forEach(span => {
-            span.style.width = '0%'
+            span.style.width = '100%'
         })
-        loader.classList.remove('on')
     })
 })
 
 
 // changing theme color when user click on them btn
-changeThemeBtn.addEventListener('click' , event => {
+changeThemeBtn.addEventListener('click' , () => {
     themeFlag = !themeFlag
 
     localStorage.setItem('theme' , themeFlag ? 'dark' : 'light')
@@ -82,7 +99,7 @@ changeThemeBtn.addEventListener('click' , event => {
     changeTheme()
 })
 
-menuChangeThemeBtn.addEventListener('click' , event =>{
+menuChangeThemeBtn.addEventListener('click' , () =>{
     themeFlag = !themeFlag
     
     localStorage.setItem('theme' , themeFlag ? 'dark' : 'light')
@@ -115,6 +132,16 @@ const changeTheme = () => {
 
 // accessing to latest color of user theme 
 const getTheme = () => {
+    // showing loader when site loaded for user
+    firstLoader.classList.add('off')
+    firstLoader.lastElementChild.addEventListener('animationend' , () => {
+        firstLoader.querySelectorAll('span').forEach(span => {
+            span.style.width = '0%'
+        })
+        firstLoader.classList.remove('off')
+        firstLoader.style.display = 'none'
+    })
+
     // changing theme
     themeFlag = localStorage.getItem('theme') == 'dark' ? true : false
 
@@ -163,5 +190,5 @@ setTimeout(() => {
         }
     })
     
-} , 2000)
+} , 500)
 

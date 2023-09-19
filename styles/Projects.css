@@ -27,6 +27,56 @@ body{
     position:relative;
 }
 
+/* first Loader for time that website load for user */
+
+.firstLoader{
+    position:fixed;
+    top:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+    z-index:22;
+    display:block;
+}
+
+
+.firstLoader span{
+    width:100%;
+    height:100%;
+    display:inline-block;
+    position:absolute;
+    top:0;
+    bottom:0;
+    z-index:23;
+}
+
+.firstLoader span:nth-child(1){
+    background-color:var(--primary);
+    z-index:23;
+}
+
+.firstLoader span:nth-child(2){
+    background-color:var(--light);
+    z-index:22;
+}
+
+.firstLoader span:nth-child(3){
+    background-color:var(--dark);
+    z-index:21;
+}
+
+.firstLoader.off span:nth-child(1){
+    animation:loading-off 1.25s 0s ease-out forwards;
+}
+
+.firstLoader.off span:nth-child(2){
+    animation:loading-off 1.25s 0.15s ease-out forwards;
+}
+
+.firstLoader.off span:nth-child(3){
+    animation:loading-off 1.25s 0.3s ease-out forwards;
+}
+
 /* loader */
 
 .loader{
@@ -70,15 +120,15 @@ body{
 }
 
 .loader.on span:nth-child(1){
-    animation:loading-on 2s 0s ease-out forwards;
+    animation:loading-on 1s ease-out forwards;
 }
 
 .loader.on span:nth-child(2){
-    animation:loading-on 1.9s 0.25s ease-out forwards;
+    animation:loading-on 1s ease-out forwards;
 }
 
 .loader.on span:nth-child(3){
-    animation:loading-on 1.8s 0.45s ease-out forwards;
+    animation:loading-on 1s ease-out forwards;
 }
 
 /* header */
@@ -660,9 +710,12 @@ footer a:hover{
 }
 
 @keyframes loading-on{
-    40%{
+    100%{
         width:100%;
     }
+}
+
+@keyframes loading-off{
     100%{
         width:0%;
     }
