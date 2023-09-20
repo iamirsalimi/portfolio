@@ -8,8 +8,10 @@ let menuElem = document.querySelector('#content .menu')
 let menuChangeThemeBtn = document.querySelector('#content .menu #themeBtn')
 let menuChangeThemeImgElem = document.querySelector('#content .menu #themeBtn img')
 let backToUpBtn = document.querySelector('.backToUp')
+let showUserBioBtn = document.querySelector('#content .user-infos button')
 
 let themeFlag = false
+let showBioFlag = false
 
 // colors pallete for changing theme 
 let colors = {
@@ -19,34 +21,11 @@ let colors = {
 
 // load other file
 
-function urlRoutes(href){
-    history.pushState({} , '' , href)
+function urlRoutes(event){
+    history.pushState({} , '' , event.target.href)
     location.reload()
 }
 
-
-document.addEventListener('click' , event => {
-    console.log(event.target.parentNode.parentNode);
-    event.preventDefault()
-
-    if(!event.target.className.includes('article-link') && !event.target.parentNode.className.includes('article-link') && !event.target.parentNode.parentNode.className.includes('article-link')){
-        return false    
-    }
-
-    event.target.href =  event.target.parentNode.className.includes('article-link') ? event.target.parentNode.href : event.target.parentNode.parentNode.className.includes('article-link') ? event.target.parentNode.parentNode.href : event.target.href
-    
-    loader.classList.add('on')
-
-    setTimeout(() => {
-        urlRoutes(event.target.href)
-    } ,995)
-
-    loader.lastElementChild.addEventListener('animationend' , () => {
-        loader.querySelectorAll('span').forEach(span => {
-            span.style.width = '100%'
-        })
-    })
-})
 
 // changing spa and load other pages on click on nav-links
 menuElem.addEventListener('click' , event => {
@@ -58,8 +37,6 @@ menuElem.addEventListener('click' , event => {
         return false    
     }
     
-    let prevLink = document.querySelector('#menu-list .active')
-    prevLink.classList.remove('active')
     event.target.parentNode.classList.add('active')
 
     hideMenuHandler()
@@ -92,8 +69,6 @@ menuWrapper.addEventListener('click' , event => {
         return false    
     }
     
-    let prevLink = document.querySelector('.left-nav .active')
-    prevLink.classList.remove('active')
     event.target.parentNode.classList.add('active')
 
     loader.classList.add('on')
@@ -169,6 +144,16 @@ const getTheme = () => {
     changeTheme()
 }
 
+// show and hide user bio
+
+function showAndHideUserBioHandler(event){
+    showBioFlag = !showBioFlag
+    event.target.innerHTML = showBioFlag ?  'Close' : 'Continue'
+    event.target.previousElementSibling.classList.toggle('show')
+}
+
+
+
 // show and hie menu
 function toggleMenu(){
     hamburgerBtn.classList.toggle('open')
@@ -181,6 +166,8 @@ backToUpBtn.addEventListener('click' , () => {
 })
 
 
+
+showUserBioBtn.addEventListener('click' , showAndHideUserBioHandler)
 hamburgerBtn.addEventListener('click' , toggleMenu)
 window.addEventListener('load' , getTheme)
 window.addEventListener('scroll' , () => {
@@ -190,6 +177,3 @@ window.addEventListener('scroll' , () => {
         backToUpBtn.classList.remove('show')
     }
 })
-
-// libraries
-AOS.init()
