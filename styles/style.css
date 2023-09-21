@@ -377,6 +377,10 @@ header nav .right-nav li svg{
     line-height: 3.75rem;
 }
 
+#content .main-content span{
+    display:inline-block;
+}
+
 #content .main-content p{
     font-size:0.85rem;
     line-height:1.25rem;
