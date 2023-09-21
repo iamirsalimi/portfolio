@@ -327,6 +327,11 @@ header .right-nav li button img{
 
 header nav .right-nav li img{
     width:1.5rem;
+    transition:0.25s ease-in-out;
+}
+
+header nav .right-nav li img:hover{
+    transform:scale(1.2);
 }
 
 header nav .right-nav li:nth-child(4) img{
@@ -337,7 +342,13 @@ header nav .right-nav li:nth-child(4) img{
 header nav .right-nav li svg{
     width:1.5rem;
     height:1.5rem;
+    transition:0.25s ease-in-out;
 }
+
+header nav .right-nav li svg:hover{
+    transform:scale(1.2);
+}
+
 
 /* main content */
 
@@ -452,11 +463,11 @@ header nav .right-nav li svg{
     margin:0 auto;
     border:2px solid var(--dark);
     border-radius:1rem;
-
     display:none;
     justify-content:center;
     flex-direction:column;
     align-items:center;
+    gap:1rem;
     opacity:0;
     transform:scale(0);
 }
