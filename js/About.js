@@ -13,11 +13,6 @@ let numElems = document.querySelectorAll('#content .user-statistic .num')
 let userMainImg = document.querySelector('.user-img-card img')
 let backToUpBtn = document.querySelector('.backToUp')
 
-let experienceLine = document.querySelector('.experience-section .experience-line')
-let experienceContainer = document.querySelector('.experience-section')
-let experienceTop = experienceContainer.getBoundingClientRect().top
-console.log(experienceTop);
-
 let themeFlag = false
 
 // colors pallete for changing theme 
@@ -167,17 +162,6 @@ backToUpBtn.addEventListener('click' , () => {
     window.scrollTo(0,0)
 })
 
-
-window.addEventListener('scroll' , () => {
-    let scrollY = experienceContainer
-
-    console.log(scrollY  , experienceTop);
-    if(scrollY > experienceTop){
-        // experienceLine.style.height = `${(10 + (scrollY - experienceTop) / 10)}px`
-        console.log('in-container');
-    }
-
-})
 
 hamburgerBtn.addEventListener('click' , toggleMenu)
 window.addEventListener('load' , getTheme)

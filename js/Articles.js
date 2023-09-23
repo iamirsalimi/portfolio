@@ -26,9 +26,8 @@ function urlRoutes(href){
 
 
 document.addEventListener('click' , event => {
-    console.log(event.target.parentNode.parentNode);
     event.preventDefault()
-
+    
     if(!event.target.className.includes('article-link') && !event.target.parentNode.className.includes('article-link') && !event.target.parentNode.parentNode.className.includes('article-link')){
         return false    
     }
@@ -67,7 +66,7 @@ menuElem.addEventListener('click' , event => {
     loader.classList.add('on')
     
     setTimeout(() => {
-        urlRoutes(event)
+        urlRoutes(event.target.href)
     } ,995)
 
     loader.lastElementChild.addEventListener('animationend' , () => {
@@ -99,7 +98,7 @@ menuWrapper.addEventListener('click' , event => {
     loader.classList.add('on')
 
     setTimeout(() => {
-        urlRoutes(event)
+        urlRoutes(event.target.href)
     } ,995)
 
     loader.lastElementChild.addEventListener('animationend' , () => {
