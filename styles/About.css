@@ -501,7 +501,7 @@ header nav .right-nav li svg:hover{
     justify-content: start;
     gap:1rem;
     color:var(--dark);
-    opacity:0.9;
+    opacity:0.75;
     text-align: justify;
 }
 

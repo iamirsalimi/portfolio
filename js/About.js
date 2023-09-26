@@ -21,33 +21,34 @@ let colors = {
     light : '#f5f5f5'
 }
 
-// load other file
 
-function urlRoutes(event){
-    history.pushState({} , '' , event.target.href)
+
+// load other files by using target href
+function urlRoutes(href){
+    history.pushState({} , '' , href)
     location.reload()
 }
 
-// changing spa and load other pages on click on nav-links
-menuElem.addEventListener('click' , event => {
-    // console.log(event.target)
-    
+// changing route and load other pages on click on nav-links
+function changeRoute(event , eventContainer){
     event.preventDefault()
-
+    
     if(!event.target.className.includes('nav-link')){
         return false    
     }
     
-    let prevLink = document.querySelector('#menu-list .active')
+    let prevLink = document.querySelector(`${eventContainer} .active`)
     prevLink.classList.remove('active')
     event.target.parentNode.classList.add('active')
 
-    hideMenuHandler()
+    if(window.innerWidth <= 780){
+        hideMenuHandler()
+    }
 
     loader.classList.add('on')
-    
+
     setTimeout(() => {
-        urlRoutes(event)
+        urlRoutes(event.target.href)
     } ,995)
 
     loader.lastElementChild.addEventListener('animationend' , () => {
@@ -55,56 +56,35 @@ menuElem.addEventListener('click' , event => {
             span.style.width = '100%'
         })
     })
-
-})
+}
 
 function hideMenuHandler(){
     menuElem.classList.remove('open')
     hamburgerBtn.classList.remove('open')
 }
 
-menuWrapper.addEventListener('click' , event => {
-    // console.log(event.target)
+// menu's container are diffrence and for removing active class from prevLink we must have access to links container and for it we must send each container to changeRoute
 
-    event.preventDefault()
+menuElem.addEventListener('click' , event => changeRoute(event , '#menu-list'))
+menuWrapper.addEventListener('click' , event => changeRoute(event , '.left-nav'))
 
-    if(!event.target.className.includes('nav-link')){
-        return false    
-    }
-    
-    let prevLink = document.querySelector('.left-nav .active')
-    prevLink.classList.remove('active')
-    event.target.parentNode.classList.add('active')
-
-    loader.classList.add('on')
-
-    setTimeout(() => {
-        urlRoutes(event)
-    } ,995)
-
-    loader.lastElementChild.addEventListener('animationend' , () => {
-        loader.querySelectorAll('span').forEach(span => {
-            span.style.width = '100%'
-        })
-    })
-})
 
 
 // changing theme color when user click on them btn
-changeThemeBtn.addEventListener('click' , () => {
-    themeFlag = !themeFlag
-
-    localStorage.setItem('theme' , themeFlag ? 'dark' : 'light')
-
-    changeTheme()
-})
-
-menuChangeThemeBtn.addEventListener('click' , () =>{
+function themeChangeHandler(){
     themeFlag = !themeFlag
     
     localStorage.setItem('theme' , themeFlag ? 'dark' : 'light')
 
-    changeTheme()
+    // getting hire me images to change their color  
+    let hireMeImg = document.querySelectorAll('.hireMeSec img')
+
+    changeTheme(hireMeImg)
+}
+
+changeThemeBtn.addEventListener('click' , themeChangeHandler)
+menuChangeThemeBtn.addEventListener('click' , () =>{
+    themeChangeHandler()
     hideMenuHandler()
 })
 

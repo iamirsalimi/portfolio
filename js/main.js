@@ -15,34 +15,34 @@ let colors = {
     light : '#f5f5f5'
 }
 
-// load other file
 
-function urlRoutes(event){
-    console.log('loaded');
-    history.pushState({} , '' , event.target.href)
+
+// load other files by using target href
+function urlRoutes(href){
+    history.pushState({} , '' , href)
     location.reload()
 }
 
-// changing spa and load other pages on click on nav-links
-menuElem.addEventListener('click' , event => {
-    // console.log(event.target)
-    
+// changing route and load other pages on click on nav-links
+function changeRoute(event , eventContainer){
     event.preventDefault()
-
+    
     if(!event.target.className.includes('nav-link')){
         return false    
     }
     
-    let prevLink = document.querySelector('#menu-list .active')
+    let prevLink = document.querySelector(`${eventContainer} .active`)
     prevLink.classList.remove('active')
     event.target.parentNode.classList.add('active')
 
-    hideMenuHandler()
+    if(window.innerWidth <= 780){
+        hideMenuHandler()
+    }
 
     loader.classList.add('on')
-    
+
     setTimeout(() => {
-        urlRoutes(event)
+        urlRoutes(event.target.href)
     } ,995)
 
     loader.lastElementChild.addEventListener('animationend' , () => {
@@ -50,72 +50,44 @@ menuElem.addEventListener('click' , event => {
             span.style.width = '100%'
         })
     })
-
-})
+}
 
 function hideMenuHandler(){
     menuElem.classList.remove('open')
     hamburgerBtn.classList.remove('open')
 }
 
-menuWrapper.addEventListener('click' , event => {
-    // console.log(event.target , event.target.className.includes('nav-link'))
+// menu's container are diffrence and for removing active class from prevLink we must have access to links container and for it we must send each container to changeRoute
 
-    event.preventDefault()
-    
-    if(!event.target.className.includes('nav-link')){
-        return false    
-    }
-    
-    let prevLink = document.querySelector('.left-nav .active')
-    prevLink.classList.remove('active')
-    event.target.parentNode.classList.add('active')
-
-    loader.classList.add('on')
-
-
-    console.log('loaded');
-    setTimeout(() => {
-        urlRoutes(event)
-    } ,995)
-
-    loader.lastElementChild.addEventListener('animationend' , () => {
-        loader.querySelectorAll('span').forEach(span => {
-            span.style.width = '100%'
-        })
-    })
-})
+menuElem.addEventListener('click' , event => changeRoute(event , '#menu-list'))
+menuWrapper.addEventListener('click' , event => changeRoute(event , '.left-nav'))
 
 
 // changing theme color when user click on them btn
-changeThemeBtn.addEventListener('click' , event => {
-    themeFlag = !themeFlag
-
-    localStorage.setItem('theme' , themeFlag ? 'dark' : 'light')
-
-
-    let hireMeImg = document.querySelectorAll('.hireMeSec img')
-
-    changeTheme(hireMeImg)
-    
-})
-
-menuChangeThemeBtn.addEventListener('click' , event =>{
+function themeChangeHandler(){
     themeFlag = !themeFlag
     
     localStorage.setItem('theme' , themeFlag ? 'dark' : 'light')
-    
+
+    // getting hire me images to change their color  
     let hireMeImg = document.querySelectorAll('.hireMeSec img')
 
     changeTheme(hireMeImg)
+}
+
+changeThemeBtn.addEventListener('click' , themeChangeHandler)
+menuChangeThemeBtn.addEventListener('click' , () =>{
+    themeChangeHandler()
     hideMenuHandler()
 })
 
-const changeTheme = (hireMeImages) => {
+const changeTheme = hireMeImages => {
 
+    // changing theme changer btn image  
     changeThemeImgElem.src = themeFlag ?  './images/moon-filled-to-sunny-filled-loop-transition.svg' : './images/sunny-filled-loop-to-moon-filled-loop-transition.svg'
-
-    menuChangeThemeImgElem.src = themeFlag ?  './images/moon-filled-to-sunny-filled-loop-transition.svg' : './images/sunny-filled-loop-to-moon-filled-loop-transition.svg'
+    
+    // changing theme changer btn image for screens less than 780px
+    menuChangeThemeImgElem.src = themeFlag ? './images/moon-filled-to-sunny-filled-loop-transition.svg' : './images/sunny-filled-loop-to-moon-filled-loop-transition.svg'
 
     hireMeImages.forEach(hireMeImg => {
         hireMeImg.src = themeFlag ?  
@@ -147,10 +119,10 @@ const getTheme = () => {
         firstLoader.style.display = 'none'
     })
     
-    // changing theme
+    // getting theme flag value from localStorage
     themeFlag = localStorage.getItem('theme') == 'dark' ? true : false
 
-    // menu for screens less than 780px , must be opposite of site's theme 
+    // menu color for screens less than 780px , must be opposite of site's theme 
     menuElem.classList.add(themeFlag ? 'light' : 'dark')
     
     let hireMeImg = document.querySelectorAll('.hireMeSec img')
