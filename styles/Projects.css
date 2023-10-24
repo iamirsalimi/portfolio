@@ -1034,6 +1034,10 @@ footer a:hover{
         width:100%;
     }
 
+    #content .main-content .user-projects .user-project{
+        padding:1rem;
+    }
+
     #content .main-content .main-content-title{
         font-size:2.5rem;
     }

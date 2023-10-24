@@ -965,6 +965,10 @@ footer a:hover{
         gap:1.5rem;
     }
 
+    #content .main-content .user-articles .user-article{
+        padding:1rem;
+    }
+
     #content .main-content .main-content-title{
         font-size:3em;
     }
