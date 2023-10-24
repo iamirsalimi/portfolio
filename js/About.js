@@ -94,7 +94,7 @@ const changeTheme = () => {
 
     menuChangeThemeImgElem.src = themeFlag ?  './images/moon-filled-to-sunny-filled-loop-transition.svg' : './images/sunny-filled-loop-to-moon-filled-loop-transition.svg'
 
-    userMainImg.src = themeFlag ? '/images/userMainImg-light.png' : '/images/userMainImg-dark.png'
+    userMainImg.src = themeFlag ? './images/userMainImg-light.png' : './images/userMainImg-dark.png'
 
     themeFlag ? menuElem.classList.remove('dark') : menuElem.classList.remove('light')
 
