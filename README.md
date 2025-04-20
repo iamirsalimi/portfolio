@@ -1,5 +1,4 @@
-I started this project after I finished learning Js to strengthen and test and challenge my skills
-
+I started this project after I finished learning JavaScript to strengthen and test and challenge my skills
 
 this app is just a static portfolio that i haven't completed it
 
